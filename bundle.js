@@ -45,6 +45,12 @@ var ComplimentMachine = function (_React$Component) {
           this.props.compliment,
           ', ',
           this.props.name
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'The time is ',
+          this.props.date.toLocaleTimeString()
         )
       );
     }
@@ -53,7 +59,11 @@ var ComplimentMachine = function (_React$Component) {
   return ComplimentMachine;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(ComplimentMachine, { compliment: 'You\'re awesome', name: 'abc' }), document.getElementById('main'));
+function giveCompliment() {
+  _reactDom2.default.render(_react2.default.createElement(ComplimentMachine, { compliment: 'You\'re awesome', name: 'abc', date: new Date() }), document.getElementById('main'));
+}
+
+giveCompliment();
 
 },{"react":178,"react-dom":27}],2:[function(require,module,exports){
 (function (process){

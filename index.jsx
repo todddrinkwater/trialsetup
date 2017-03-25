@@ -10,9 +10,14 @@ class ComplimentMachine extends React.Component{
       <div>
         <p>What's your name?</p>
         <p>{this.props.compliment}, {this.props.name}</p>
+        <p>The time is {this.props.date.toLocaleTimeString()}</p>
       </div>
     )
   }
 }
 
-ReactDOM.render(<ComplimentMachine compliment="You're awesome" name="abc" />, document.getElementById('main'))
+function giveCompliment(){
+  ReactDOM.render(<ComplimentMachine compliment="You're awesome" name="abc" date={new Date()} />, document.getElementById('main'))
+}
+
+giveCompliment()
