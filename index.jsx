@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom'
 
 
 
-var ComplimentMachine = React.createClass({
-  render: function() {
+class ComplimentMachine extends React.Component{
+  render() {
     return (
       <div>
         <p>What's your name?</p>
@@ -13,6 +13,6 @@ var ComplimentMachine = React.createClass({
       </div>
     )
   }
-})
+}
 
-ReactDOM.render(<ComplimentMachine compliment="You're awesome" name="abc"/>, document.getElementById('main'))
+ReactDOM.render(<ComplimentMachine compliment="You're awesome" name="abc" />, document.getElementById('main'))
