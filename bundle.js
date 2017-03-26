@@ -19,51 +19,67 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ComplimentMachine = function (_React$Component) {
-  _inherits(ComplimentMachine, _React$Component);
+var Clock = function (_React$Component) {
+  _inherits(Clock, _React$Component);
 
-  function ComplimentMachine() {
-    _classCallCheck(this, ComplimentMachine);
+  function Clock(props) {
+    _classCallCheck(this, Clock);
 
-    return _possibleConstructorReturn(this, (ComplimentMachine.__proto__ || Object.getPrototypeOf(ComplimentMachine)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Clock.__proto__ || Object.getPrototypeOf(Clock)).call(this, props));
+
+    _this.state = { date: new Date(), name: "Todd" };
+    return _this;
   }
 
-  _createClass(ComplimentMachine, [{
+  _createClass(Clock, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.timerID = setInterval(function () {
+        return _this2.tick();
+      }, 1000);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+  }, {
+    key: 'tick',
+    value: function tick() {
+      this.setState({
+        date: new Date()
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
-          'p',
+          'h1',
           null,
-          'What\'s your name?'
+          'Hello, ',
+          this.state.name,
+          '!'
         ),
         _react2.default.createElement(
-          'p',
+          'h2',
           null,
-          this.props.compliment,
-          ', ',
-          this.props.name
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'The time is ',
-          this.props.date.toLocaleTimeString()
+          'It is ',
+          this.state.date.toLocaleTimeString(),
+          '.'
         )
       );
     }
   }]);
 
-  return ComplimentMachine;
+  return Clock;
 }(_react2.default.Component);
 
-function giveCompliment() {
-  _reactDom2.default.render(_react2.default.createElement(ComplimentMachine, { compliment: 'You\'re awesome', name: 'abc', date: new Date() }), document.getElementById('main'));
-}
-
-giveCompliment();
+_reactDom2.default.render(_react2.default.createElement(Clock, null), document.getElementById('root'));
 
 },{"react":178,"react-dom":27}],2:[function(require,module,exports){
 (function (process){
